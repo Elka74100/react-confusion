@@ -19,7 +19,8 @@ import { baseUrl } from '../shared/baseUrl';
         );
     }
 
-    const Menu = (props) => {
+    function Menu (props) {
+    // const Menu = (props) => {
 
         const menu = props.dishes.dishes.map((dish) => {
             return (
