@@ -3,25 +3,34 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
+import { Fade, Stagger } from 'react-animation-components';
+
 
 
 function RenderLeader({item, isLoading, errMess}) {
-    const listOfLeaders = item.leaders.map((leader) => {
+    const listOfLeaders = 
+    <Stagger in>
+    {
+    item.leaders.map((leader) => {
         return (
-        <Media>
-            <Media left middle >
-              <Media object src={baseUrl +leader.image} alt={leader.name} />
-            </Media>
-            <Media body className="ml-5">
-              <Media heading>
-                <p>{leader.name}</p>
-              </Media>
-                <p>{leader.designation}</p>
-                <p>{leader.description}</p>
-            </Media>
-        </Media> 
+        <Fade in>
+            <Media>
+                <Media left middle >
+                <Media object src={baseUrl +leader.image} alt={leader.name} />
+                </Media>
+                <Media body className="ml-5">
+                <Media heading>
+                    <p>{leader.name}</p>
+                </Media>
+                    <p>{leader.designation}</p>
+                    <p>{leader.description}</p>
+                </Media>
+            </Media> 
+        </Fade>
         );
     })
+    }
+    </Stagger>
     if (isLoading) {
         return(
                 <Loading />
